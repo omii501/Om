@@ -1,0 +1,38 @@
+def linearSearch(arr,key):
+    for i in range(len(arr)):
+        if arr[i] == key:
+            print(f"{key} found at index {i}")
+            return
+    else:
+        print(f"{key} not found in the array")
+
+# binary search
+def binarySearch(arr,key):
+    sorted_arr = sorted(arr)
+    print(f"\nsorted array : {sorted_arr}")
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low+high)//2
+        if sorted_arr[mid] == key:
+            print(f"{key} found at index {mid}")
+            return
+        elif sorted_arr[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+customer_id = [1,232,4352,6,3462,527,57,25,2745,427,275,457]
+
+while True:
+    try:
+        key = int(input("enter a customer id to find : "))
+        break
+    except ValueError:
+        print("Enter only an integer value")
+
+linearSearch(customer_id,key)
+binarySearch(customer_id,key)
+
+
