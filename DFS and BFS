@@ -1,0 +1,38 @@
+from collections import deque
+
+# Create graph using dictionary
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+# BFS Function
+def bfs(start):
+    visited = []
+    queue = deque([start])
+    while queue:
+        node = queue.popleft()
+        if node not in visited:
+            visited.append(node)
+            queue.extend(graph[node])
+    print("BFS Traversal:", visited)
+
+# DFS Function
+def dfs(start, visited=None):
+    if visited is None:
+        visited = []
+    visited.append(start)
+    for node in graph[start]:
+        if node not in visited:
+            dfs(node, visited)
+    return visited
+
+# Main part
+start_node = 'A'
+print("Starting from:", start_node)
+bfs(start_node)
+print("DFS Traversal:", dfs(start_node))
