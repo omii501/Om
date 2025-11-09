@@ -1,0 +1,29 @@
+# Hash Table using Chaining
+
+# Size of hash table
+SIZE = 10
+hash_table = [[] for _ in range(SIZE)]
+
+# Hash function (Division method)
+def hash_func(key):
+    return key % SIZE
+
+# Insert key
+def insert(key):
+    index = hash_func(key)
+    hash_table[index].append(key)
+
+# Display hash table
+def display():
+    for i in range(SIZE):
+        print(i, ":", hash_table[i])
+
+# Main program
+insert(12)
+insert(22)
+insert(42)
+insert(33)
+insert(52)
+
+print("Hash Table using Chaining:")
+display()
